@@ -4,7 +4,7 @@ const axios = require('axios');
 const app = express();
 app.use(express.json());
 
-const DB_OPS_URL = process.env.DB_OPS_URL || "http://db-ops-service:5000";
+const DB_OPS_URL = process.env.DB_OPS_URL;
 
 // Tool: Get sentiment breakdown
 app.post('/tools/get_sentiment_breakdown', async (req, res) => {
@@ -169,7 +169,7 @@ app.get('/health', (req, res) => {
   res.json({ status: 'healthy', service: 'MCP Gateway' });
 });
 
-const PORT = 5001;
+const PORT = process.env.PORT || 5001
 
 app.listen(PORT, () => {
   console.log(`🐳 MCP Gateway running on port ${PORT}`);
