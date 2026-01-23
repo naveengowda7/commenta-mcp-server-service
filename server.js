@@ -6,7 +6,6 @@ app.use(express.json());
 
 const DB_OPS_URL = process.env.DB_OPS_URL;
 
-// Tool: Get sentiment breakdown
 app.post('/tools/get_sentiment_breakdown', async (req, res) => {
   try {
     const { videoId } = req.body;
@@ -28,7 +27,6 @@ app.post('/tools/get_sentiment_breakdown', async (req, res) => {
   }
 });
 
-// Tool: Get top comments by type
 app.post('/tools/get_top_comments', async (req, res) => {
   try {
     const { videoId, type, limit = 10 } = req.body;
@@ -76,7 +74,6 @@ app.post('/tools/get_top_comments', async (req, res) => {
   }
 });
 
-// Tool: Search comments
 app.post('/tools/search_comments', async (req, res) => {
   try {
     const { videoId, keyword } = req.body;
@@ -105,7 +102,6 @@ app.post('/tools/search_comments', async (req, res) => {
   }
 });
 
-// Tool: Get top liked comments
 app.post('/tools/get_top_likes', async (req, res) => {
   try {
     const { videoId, limit = 10 } = req.body;
@@ -139,7 +135,6 @@ app.post('/tools/get_top_likes', async (req, res) => {
   }
 });
 
-// Tool: Get top replied comments
 app.post('/tools/get_top_replies', async (req, res) => {
   try {
     const { videoId, limit = 10 } = req.body;
@@ -172,8 +167,8 @@ app.get('/health', (req, res) => {
 const PORT = process.env.PORT || 5001
 
 app.listen(PORT, () => {
-  console.log(`🐳 MCP Gateway running on port ${PORT}`);
-  console.log('📍 Endpoints:');
+  console.log(` MCP Gateway running on port ${PORT}`);
+  console.log(' Endpoints:');
   console.log('   POST /tools/get_sentiment_breakdown');
   console.log('   POST /tools/get_top_comments');
   console.log('   POST /tools/search_comments');
